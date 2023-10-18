@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import getWeatherByCityApi from '../../../api/v1/weather/getWeatherByCityApi';
+import getWeatherApi from '../../../api/v1/weather/getWeatherApi';
 import cfg from '../../../config/cfg';
 
 const useLoadWeather = () => {
@@ -15,7 +15,7 @@ const useLoadWeather = () => {
     };
 
     try {
-      const res = await getWeatherByCityApi(apiParams);
+      const res = await getWeatherApi(apiParams);
       // console.log("555 ~ res:", res)
 
       setCurrentWeather(res?.json);

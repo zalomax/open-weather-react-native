@@ -1,35 +1,32 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+    wrapper: {
         flex: 1,
         width: '100%',
+        backgroundColor: 'steelblue',    
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent: 'flex-start',
-        padding: 10,
-        backgroundColor: '#999',
     },
     row: {
         // flex: 1,
         width: '100%',
-        // flexDirection: 'row',
         // backgroundColor: 'green',
-        // height: '16%',
     },
-    row2: {
+    container: {
         // flex: 1,
-        width: '100%',
-        // flexDirection: 'row',
+        width: '30%',
         // backgroundColor: 'green',
-        height: '16%',
-    },
-    footerWrapper: {
-        // flex: 1,
-        width: '100%',
         flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    iconContainer: {
+        width: '10%',
+        // backgroundColor: 'cyan',
+    },
+    iconText: {
+        width: '40%',
         // backgroundColor: 'yellow',
-        // height: '10%',
     },
 });
 
