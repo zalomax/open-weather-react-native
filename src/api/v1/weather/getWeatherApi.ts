@@ -1,4 +1,5 @@
 import ApiService from '../../ApiService'
+import { WeatherData } from './WeatherData.types';
 
 const getWeatherApi = (params?: any): Promise<any> => {
   const uri = `/weather`

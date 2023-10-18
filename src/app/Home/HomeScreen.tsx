@@ -8,14 +8,19 @@ import SimpleWeatherWidget from './ui/SimpleWeatherWidget/SimpleWeatherWidget'
 
 const HomeScreen = ({ navigation }: any) => {
     const { location } = useGeolocation()
-    // console.log("111 ~ location:", location)
+    // console.log("111 ~ location:", JSON.stringify(location, null, '\t'))
     const { loadWeather, currentWeather, appError } = useLoadWeather()
     // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
     useEffect(() => {
         // console.log("333 ~ location:", location)
         if (location) {
-            loadWeather()
+            const payload = {
+                lat: location.coords.latitude,
+                lon: location.coords.longitude,
+            };
+
+            loadWeather(payload)
         }
     }, [location])
 

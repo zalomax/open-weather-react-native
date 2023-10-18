@@ -1,16 +1,18 @@
 import { useState, useCallback } from 'react'
 import getWeatherApi from '../../../api/v1/weather/getWeatherApi';
+import { WeatherData } from '../../../api/v1/weather/WeatherData.types';
 import cfg from '../../../config/cfg';
 
 const useLoadWeather = () => {
-  const [currentWeather, setCurrentWeather] = useState<any>(null)
+  const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null)
   const [appError, setAppError] = useState<any>(null)  
 
-  const loadWeather = useCallback(async () => {
+  const loadWeather = useCallback(async (payload: any) => {
     // setIsLoading(true);
 
     const apiParams = {
-      q: 'London,uk',
+      ...payload,
+      // q: 'London,uk',
       APPID: cfg.OPEN_WEATHER_API_KEY
     };
 
