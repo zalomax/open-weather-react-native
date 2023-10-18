@@ -24,6 +24,13 @@ const styles = StyleSheet.create({
         // backgroundColor: 'green',
         height: '16%',
     },
+    row3: {
+        // flex: 1,
+        width: '100%',
+        // flexDirection: 'row',
+        // backgroundColor: 'green',
+        height: '40%',
+    },
     footerWrapper: {
         // flex: 1,
         width: '100%',
