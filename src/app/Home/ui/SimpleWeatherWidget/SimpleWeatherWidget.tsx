@@ -25,7 +25,7 @@ const SimpleWeatherWidget = ({
                 <Text>{weatherData?.name}</Text>
             </View>
             <View style={styles.row}>
-                <Text>{weatherData?.main?.temp}</Text>
+                <Text>{weatherData?.main?.temp} &#8457;</Text>
             </View>
             <View style={styles.row}>
                 <View style={styles.container}>
