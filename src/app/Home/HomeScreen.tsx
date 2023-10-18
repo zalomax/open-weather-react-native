@@ -22,7 +22,9 @@ const HomeScreen = ({ navigation }: any) => {
             <Text>Home Screen!</Text>
             <Button
                 title="Go to City"
-                onPress={() => navigation.navigate('City')}
+                onPress={() => navigation.navigate('City', {
+                    cityName: 'London,uk',                   
+                  })}
             />
         </View>
     );
