@@ -17,7 +17,7 @@ const SimpleWeatherWidget = ({
     // const cityName = weatherData || weatherData?.weather[0]
 
     // console.log("333 ~ weatherItem.icon:", JSON.stringify(weatherItem.icon, null, '\t'))
-    const WeatherIcon = WeatherIconComponents[weatherItem.icon] || WeatherIconComponents.default
+    const WeatherIcon = WeatherIconComponents[weatherItem?.icon] || WeatherIconComponents.default
 
     return (
         <View style={styles.wrapper}>
