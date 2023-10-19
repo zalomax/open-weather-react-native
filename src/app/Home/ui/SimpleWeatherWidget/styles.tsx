@@ -5,16 +5,16 @@ const styles = StyleSheet.create({
         // flex: 1,
         width: '100%',
         // backgroundColor: '#999',
-        backgroundColor: 'red',    
+        // backgroundColor: 'red',    
         // flexDirection: 'row',
         // flexWrap: 'wrap',    
         // alignItems: 'center',
-        // height: 200
+        // height: 200        
     },
     row: {
         // flex: 1,
         width: '100%',
-        backgroundColor: 'green',
+        // backgroundColor: 'green',
         alignItems: 'center',
         // height: 30
     },

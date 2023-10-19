@@ -26,6 +26,8 @@ const styles = StyleSheet.create({
         height: 160,
         // height: '22%',
         // height: 'auto',
+        marginTop: 40,
+        marginBottom: 60,
     },
     row3: {
         // flex: 1,
@@ -47,6 +49,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         // backgroundColor: 'yellow',
         // height: '10%',
+        marginTop: 10,
     },
 });
 

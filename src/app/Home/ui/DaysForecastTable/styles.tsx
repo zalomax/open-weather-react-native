@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
         // flexWrap: 'wrap',    
         // alignItems: 'center',
         height: 240,
+        borderTopColor: 'white',
+        borderTopWidth: 1,
+        paddingTop: 10,
     },
     row: {
         // flex: 1,
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
         // flex: 1,
         width: '100%',
         // backgroundColor: 'cyan',
-        alignItems: 'center',        
+        alignItems: 'center',
         height: 70
     },
     rowIcon: {

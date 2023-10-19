@@ -1,9 +1,9 @@
 import { Button, Text, View, Dimensions } from 'react-native'
 import Carousel from 'react-native-reanimated-carousel';
+import ForecastCard from '../ForecastCard/ForecastCard';
 // import styles from './styles';
 
 const ForecastCarousel = ({
-    city,
     forecast
 }: any) => {
     // const defaultWeatherItem = {
@@ -13,6 +13,8 @@ const ForecastCarousel = ({
     //     "icon": "04d"
     //   }
 
+    const data = forecast?.list || [];
+
     const width = Dimensions.get('window').width;
     // const width = 40;
 
@@ -21,28 +23,17 @@ const ForecastCarousel = ({
             <Carousel
                 loop
                 style={{
-                    width: width - 10,
+                    width: width - 10,                    
                     // backgroundColor: 'yellow',
-                 }}
+                }}
                 width={(width / 4)}
-                height={80}
+                height={120}
                 autoPlay={false}
-                data={[...new Array(6).keys()]}
+                data={data}
                 scrollAnimationDuration={1000}
                 onSnapToItem={(index) => console.log('current index:', index)}
-                renderItem={({ index }) => (
-                    <View
-                        style={{
-                            flex: 1,
-                            borderWidth: 1,
-                            justifyContent: 'center',
-                            backgroundColor: 'green',
-                        }}
-                    >
-                        <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                            {index}
-                        </Text>
-                    </View>
+                renderItem={({ index, item }) => (
+                    <ForecastCard index={index} item={item} />
                 )}
             />
         </View>
