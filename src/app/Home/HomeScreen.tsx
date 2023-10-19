@@ -8,6 +8,7 @@ import useLoadWeather from './hooks/useLoadWeather'
 import useLoadForecast from './hooks/useLoadForecast'
 import Carousel from 'react-native-reanimated-carousel';
 import ForecastCarousel from './ui/Forecast/ForecastCarousel/ForecastCarousel'
+import DaysForecastTable from './ui/DaysForecastTable/DaysForecastTable'
 
 const HomeScreen = ({ navigation }: any) => {
     const { location } = useGeolocation()
@@ -43,9 +44,15 @@ const HomeScreen = ({ navigation }: any) => {
                 <View style={styles.row2}>
                     <SimpleWeatherWidget weatherData={currentWeather} />
                 </View>
+                <View style={styles.row3}>
+                    <ForecastCarousel city={'Mountain View'} />
+                </View>
                 {/* <View style={styles.row2}>
                     <ForecastCarousel city={'Mountain View'} />
                 </View> */}
+                <View style={styles.rowTable}>
+                    <DaysForecastTable  />
+                </View>
                 <View style={styles.footerWrapper}>
                     <Button
                         title="Go to City"

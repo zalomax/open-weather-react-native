@@ -4,19 +4,19 @@ const styles = StyleSheet.create({
     wrapper: {
         // flex: 1,
         width: '100%',
-        // backgroundColor: '#999',
-        backgroundColor: 'red',    
+        backgroundColor: 'orange',
+        // backgroundColor: 'skyblue',    
         // flexDirection: 'row',
         // flexWrap: 'wrap',    
         // alignItems: 'center',
-        // height: 200
+        height: 240,
     },
     row: {
         // flex: 1,
         width: '100%',
-        backgroundColor: 'green',
+        // backgroundColor: 'green',
         alignItems: 'center',
-        // height: 30
+        height: 30
     },
     row2: {
         // flex: 1,

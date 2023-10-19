@@ -8,19 +8,19 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface WeatherData {
-    coord:      Coord;
-    weather:    Weather[];
-    base:       string;
-    main:       Main;
+    coord: Coord;
+    weather: Weather[];
+    base: string;
+    main: Main;
     visibility: number;
-    wind:       Wind;
-    clouds:     Clouds;
-    dt:         number;
-    sys:        Sys;
-    timezone:   number;
-    id:         number;
-    name:       string;
-    cod:        number;
+    wind: Wind;
+    clouds: Clouds;
+    dt: number;
+    sys: Sys;
+    timezone: number;
+    id: number;
+    name: string;
+    cod: number;
 }
 
 export interface Clouds {
@@ -33,32 +33,32 @@ export interface Coord {
 }
 
 export interface Main {
-    temp:       number;
+    temp: number;
     feels_like: number;
-    temp_min:   number;
-    temp_max:   number;
-    pressure:   number;
-    humidity:   number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    humidity: number;
 }
 
 export interface Sys {
-    type:    number;
-    id:      number;
+    type: number;
+    id: number;
     country: string;
     sunrise: number;
-    sunset:  number;
+    sunset: number;
 }
 
 export interface Weather {
-    id:          number;
-    main:        string;
+    id: number;
+    main: string;
     description: string;
-    icon:        string;
+    icon: string;
 }
 
 export interface Wind {
     speed: number;
-    deg:   number;
+    deg: number;
 }
 
 // Converts JSON strings to/from your types
@@ -125,7 +125,7 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
             const typ = typs[i];
             try {
                 return transform(val, typ, getProps);
-            } catch (_) {}
+            } catch (_) { }
         }
         return invalidValue(typs, val, key, parent);
     }
@@ -184,9 +184,9 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
     if (Array.isArray(typ)) return transformEnum(typ, val);
     if (typeof typ === "object") {
         return typ.hasOwnProperty("unionMembers") ? transformUnion(typ.unionMembers, val)
-            : typ.hasOwnProperty("arrayItems")    ? transformArray(typ.arrayItems, val)
-            : typ.hasOwnProperty("props")         ? transformObject(getProps(typ), typ.additional, val)
-            : invalidValue(typ, val, key, parent);
+            : typ.hasOwnProperty("arrayItems") ? transformArray(typ.arrayItems, val)
+                : typ.hasOwnProperty("props") ? transformObject(getProps(typ), typ.additional, val)
+                    : invalidValue(typ, val, key, parent);
     }
     // Numbers can be parsed by Date but shouldn't be.
     if (typ === Date && typeof val !== "number") return transformDate(val);
