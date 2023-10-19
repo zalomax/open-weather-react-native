@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     },
     container: {
         // flex: 1,
-        width: '30%',
+        // width: '30%',
         // backgroundColor: 'green',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        // flexDirection: 'row',
+        // justifyContent: 'space-between',
     },
     iconContainer: {
         width: '10%',

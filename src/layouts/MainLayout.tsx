@@ -17,9 +17,9 @@ const MainLayout: React.FC<MainLayoutType> = ({
       <Text>Loading...</Text>
     </View>
   ) : (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {children}
-    </View>
+    </ScrollView>
   )
 };
 

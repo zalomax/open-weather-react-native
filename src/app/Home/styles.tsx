@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         // justifyContent: 'flex-start',
         padding: 10,
         // backgroundColor: '#999',
-        backgroundColor: 'steelblue',
+        // backgroundColor: 'steelblue',
     },
     row: {
         // flex: 1,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         width: '100%',
         // flexDirection: 'row',
         // backgroundColor: 'green',
-        height: '30%',
+        // height: '30%',
     },
     rowTable: {
         // flex: 1,
