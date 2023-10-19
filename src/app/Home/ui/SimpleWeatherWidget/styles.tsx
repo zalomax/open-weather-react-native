@@ -11,22 +11,25 @@ const styles = StyleSheet.create({
         // alignItems: 'center',
     },
     row: {
-        flex: 1,
+        // flex: 1,
         width: '100%',
         backgroundColor: 'green',
         alignItems: 'center',
+        height: 30
     },
     row2: {
-        flex: 1,
+        // flex: 1,
         width: '100%',
         backgroundColor: 'cyan',
-        alignItems: 'center',
+        alignItems: 'center',        
+        height: 70
     },
     rowIcon: {
-        flex: 1,
+        // flex: 1,
         width: '100%',
         backgroundColor: 'orange',
         alignItems: 'center',
+        height: 40
     },
     iconContainer: {
         // flex: 1,

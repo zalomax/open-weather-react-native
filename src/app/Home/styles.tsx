@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
         width: '100%',
         // flexDirection: 'row',
         // backgroundColor: 'green',
-        height: '22%',
+        height: 160,
+        // height: '22%',
+        // height: 'auto',
     },
     row3: {
         // flex: 1,
