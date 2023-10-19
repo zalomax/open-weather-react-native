@@ -14,13 +14,18 @@ const ForecastCarousel = ({
     //   }
 
     const width = Dimensions.get('window').width;
+    // const width = 40;
 
     return (
         <View style={{ flex: 1 }}>
             <Carousel
                 loop
-                width={width}
-                height={width / 2}
+                style={{
+                    width: width - 10,
+                    // backgroundColor: 'yellow',
+                 }}
+                width={(width / 4)}
+                height={80}
                 autoPlay={false}
                 data={[...new Array(6).keys()]}
                 scrollAnimationDuration={1000}
@@ -31,6 +36,7 @@ const ForecastCarousel = ({
                             flex: 1,
                             borderWidth: 1,
                             justifyContent: 'center',
+                            backgroundColor: 'green',
                         }}
                     >
                         <Text style={{ textAlign: 'center', fontSize: 30 }}>
