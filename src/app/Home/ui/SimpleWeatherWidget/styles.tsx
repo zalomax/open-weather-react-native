@@ -20,9 +20,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    iconContainer: {
+    icon: {
         width: '10%',
-        // backgroundColor: 'cyan',
+        // backgroundColor: '#f80',
+        // color: 'red',
+        // color: 'white',
+        color: '#333333',
     },
     iconText: {
         width: '40%',

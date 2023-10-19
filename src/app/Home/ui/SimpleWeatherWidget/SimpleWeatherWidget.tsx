@@ -29,7 +29,7 @@ const SimpleWeatherWidget = ({
             </View>
             <View style={styles.row}>
                 <View style={styles.container}>
-                    <WeatherIcon style={styles.iconContainer} width={40} height={40} />
+                    <WeatherIcon style={styles.icon} width={40} height={40} />
                     <Text style={styles.iconText}>{weatherItem?.main}</Text>
                 </View>
             </View>
