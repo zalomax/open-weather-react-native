@@ -1,5 +1,4 @@
 import { Button, Text, View } from 'react-native'
-import { useEffect } from 'react'
 import { WeatherIconComponents } from '../../consts';
 import styles from './styles';
 
@@ -12,6 +11,7 @@ const SimpleWeatherWidget = ({
     //     "description": "broken clouds",
     //     "icon": "04d"
     //   }
+    // console.log("333 ~ weatherData:", JSON.stringify(weatherData, null, '\t'))
 
     const weatherItem = weatherData?.weather[0];
     // const cityName = weatherData || weatherData?.weather[0]

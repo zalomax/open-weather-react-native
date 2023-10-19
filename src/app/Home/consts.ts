@@ -4,10 +4,16 @@ import IconWeather3 from './../../../assets/weather/weather3.svg'
 import IconWeather4 from './../../../assets/weather/weather4.svg'
 
 export const WeatherIconComponents: any = {
-    default: IconWeather4,
-    '04d': IconWeather1,
-    '01n': IconWeather2,
-    '10d': IconWeather3,
+  default: IconWeather4,
+  '04d': IconWeather1,
+  '01n': IconWeather2,
+  '10d': IconWeather3,
+}
+
+export const qParamCities: any = {
+  'San Francisco': 'San Francisco,us',
+  'Baltimore': 'Baltimore,us',
+  'London': 'London,uk',
 }
 
 /*

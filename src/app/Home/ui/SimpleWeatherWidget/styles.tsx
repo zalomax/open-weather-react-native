@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     iconContainer: {
         // flex: 1,
-        width: '40%',
+        width: '50%',
         // backgroundColor: 'red',
         flexDirection: 'row',
         // columnGap: 20,
@@ -47,6 +47,12 @@ const styles = StyleSheet.create({
         color: 'white',
         // color: '#333333',
     },
+    iconText: {
+        width: '40%',
+        fontSize: 22,
+        color: 'white',
+        // backgroundColor: 'yellow',
+    },
     nameText: {
         // width: '40%',
         fontSize: 18,
@@ -58,12 +64,6 @@ const styles = StyleSheet.create({
         // width: '40%',
         fontSize: 48,
         fontWeight: '600',
-        color: 'white',
-        // backgroundColor: 'yellow',
-    },
-    iconText: {
-        width: '40%',
-        fontSize: 22,
         color: 'white',
         // backgroundColor: 'yellow',
     },

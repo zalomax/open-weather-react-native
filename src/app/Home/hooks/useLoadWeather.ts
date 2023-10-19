@@ -12,10 +12,9 @@ const useLoadWeather = () => {
 
     const apiParams = {
       ...payload,
-      // q: 'London,uk',
       APPID: cfg.OPEN_WEATHER_API_KEY
     };
-
+    
     try {
       const res = await getWeatherApi(apiParams);
       // console.log("555 ~ res:", res)
