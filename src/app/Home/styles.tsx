@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        // flexDirection: 'row',
+        // flexWrap: 'wrap',
         justifyContent: 'flex-start',
         padding: 10,
         backgroundColor: '#999',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         width: '100%',
         // flexDirection: 'row',
         // backgroundColor: 'green',
-        height: '16%',
+        height: '22%',
     },
     row3: {
         // flex: 1,

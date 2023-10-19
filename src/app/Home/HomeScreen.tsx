@@ -43,9 +43,9 @@ const HomeScreen = ({ navigation }: any) => {
                 <View style={styles.row2}>
                     <SimpleWeatherWidget weatherData={currentWeather} />
                 </View>
-                <View style={styles.row2}>
+                {/* <View style={styles.row2}>
                     <ForecastCarousel city={'Mountain View'} />
-                </View>
+                </View> */}
                 <View style={styles.footerWrapper}>
                     <Button
                         title="Go to City"
