@@ -31,7 +31,7 @@ const ForecastCarousel = ({
                 autoPlay={false}
                 data={data}
                 scrollAnimationDuration={1000}
-                onSnapToItem={(index) => console.log('current index:', index)}
+                // onSnapToItem={(index) => console.log('current index:', index)}
                 renderItem={({ index, item }) => (
                     <ForecastCard index={index} item={item} />
                 )}

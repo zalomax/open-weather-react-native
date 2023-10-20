@@ -10,6 +10,7 @@ const ForecastWeekWidget = ({
         <View style={styles.wrapper}>
             <FlatList
                 data={forecastWeek?.list}
+                scrollEnabled={false}
                 renderItem={({ item }: any) => {
                     const dayText = format(new Date(item?.dt_txt), 'EE')
 
