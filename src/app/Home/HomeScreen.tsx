@@ -7,8 +7,9 @@ import SimpleWeatherWidget from './ui/SimpleWeatherWidget/SimpleWeatherWidget'
 import useLoadWeather from './hooks/useLoadWeather'
 import useLoadForecast from './hooks/useLoadForecast'
 import ForecastCarousel from './ui/Forecast/ForecastCarousel/ForecastCarousel'
-import DaysForecastTable from './ui/DaysForecastTable/DaysForecastTable'
+import ForecastWeekWidget from './ui/ForecastWeekWidget/ForecastWeekWidget'
 import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
+import useLoadForecastWeek from './hooks/useLoadForecastWeek'
 
 const HomeScreen = ({ navigation }: any) => {
     const { location } = useGeolocation()
@@ -17,7 +18,8 @@ const HomeScreen = ({ navigation }: any) => {
     // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
     const { loadForecast, forecast } = useLoadForecast()
-    // console.log("222 ~ forecast:", JSON.stringify(!!forecast, null, '\t'))
+    const { loadForecastWeek, forecastWeek } = useLoadForecastWeek()
+    // console.log("222 ~ forecast:", JSON.stringify(forecastWeek, null, '\t'))
 
     useEffect(() => {
         // console.log("333 ~ location:", location)
@@ -29,6 +31,7 @@ const HomeScreen = ({ navigation }: any) => {
 
             loadWeather(payload)
             loadForecast(payload)
+            loadForecastWeek(payload)
         }
     }, [location])
 
@@ -72,8 +75,8 @@ const HomeScreen = ({ navigation }: any) => {
                 {/* <View style={styles.row2}>
                     <ForecastCarousel city={'Mountain View'} />
                 </View> */}
-                <View style={styles.rowTable}>
-                    <DaysForecastTable />
+                <View style={styles.rowForecastWeek}>
+                    <ForecastWeekWidget forecastWeek={forecastWeek} />
                 </View>
                 <View style={styles.footerWrapper}>
                     <Button

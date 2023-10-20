@@ -36,12 +36,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'green',
         // height: '30%',
     },
-    rowTable: {
-        // flex: 1,
+    rowForecastWeek: {
         width: '100%',
-        // flexDirection: 'row',
-        // backgroundColor: 'green',
-        // height: '40%',
     },
     footerWrapper: {
         // flex: 1,
