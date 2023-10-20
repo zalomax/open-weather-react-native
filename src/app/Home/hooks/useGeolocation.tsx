@@ -32,7 +32,8 @@ const useGeolocation = () => {
         return;
       }
 
-      let location: any = await Location.getCurrentPositionAsync({})
+      const location: any = await Location.getCurrentPositionAsync({})
+
       setLocation(location)
     })();
   }, []);

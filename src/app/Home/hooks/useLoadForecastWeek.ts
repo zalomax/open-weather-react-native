@@ -1,10 +1,8 @@
 import { useState, useCallback } from 'react'
-import { ForecastData } from '../../../api/v1/forecast/ForecastData.types';
 import getForecastWeekApi from '../../../api/v1/forecast/getForecastWeekApi';
 import cfg from '../../../config/cfg';
 
-const useLoadForecastWeek = () => {
-  const [forecastWeek, setForecastWeek] = useState<ForecastData | null>(null)
+const useLoadForecastWeek = (setForecastWeek: any) => {
   // const [appError, setAppError] = useState<any>(null)  
 
   const loadForecastWeek = useCallback(async (payload: any) => {
@@ -28,7 +26,6 @@ const useLoadForecastWeek = () => {
 
   return {
     loadForecastWeek,
-    forecastWeek,
     // appError
   };
 };

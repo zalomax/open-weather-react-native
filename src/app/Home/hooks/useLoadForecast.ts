@@ -1,10 +1,8 @@
 import { useState, useCallback } from 'react'
-import { ForecastData } from '../../../api/v1/forecast/ForecastData.types';
 import getForecastApi from '../../../api/v1/forecast/getForecastApi';
 import cfg from '../../../config/cfg';
 
-const useLoadForecast = () => {
-  const [forecast, setForecast] = useState<ForecastData | null>(null)
+const useLoadForecast = (setForecast: any) => {  
   // const [appError, setAppError] = useState<any>(null)  
 
   const loadForecast = useCallback(async (payload: any) => {
@@ -28,8 +26,7 @@ const useLoadForecast = () => {
   }, []);
 
   return {
-    loadForecast,
-    forecast,
+    loadForecast,    
     // appError
   };
 };

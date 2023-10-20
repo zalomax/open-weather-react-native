@@ -14,3 +14,6 @@ https://github.com/software-mansion/react-native-svg/blob/main/USAGE.md
 
 # Free Icons
 https://www.svgrepo.com/
+
+# Date ISO-8601 format
+https://stackoverflow.com/questions/52334494/get-the-current-date-using-date-fns-in-iso-8601-format

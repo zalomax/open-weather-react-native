@@ -18,6 +18,8 @@ const ForecastCarousel = ({
     const width = Dimensions.get('window').width;
     // const width = 40;
 
+    if(!forecast) return null
+
     return (
         <View style={{ flex: 1 }}>
             <Carousel

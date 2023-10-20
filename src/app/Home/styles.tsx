@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
         // backgroundColor: '#999',
         // backgroundColor: 'steelblue',
     },
+    cachedText: {
+        color: 'white',
+    },
     row: {
         // flex: 1,
         width: '100%',

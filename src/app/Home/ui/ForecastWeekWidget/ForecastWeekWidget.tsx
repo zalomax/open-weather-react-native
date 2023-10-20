@@ -6,6 +6,8 @@ import { WeatherIconComponents } from '../../consts'
 const ForecastWeekWidget = ({
     forecastWeek
 }: any) => {
+    if (!forecastWeek) return null
+
     return (
         <View style={styles.wrapper}>
             <FlatList

@@ -8,36 +8,62 @@ import useLoadWeather from './hooks/useLoadWeather'
 import useLoadForecast from './hooks/useLoadForecast'
 import ForecastCarousel from './ui/Forecast/ForecastCarousel/ForecastCarousel'
 import ForecastWeekWidget from './ui/ForecastWeekWidget/ForecastWeekWidget'
-import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown';
+import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
 import useLoadForecastWeek from './hooks/useLoadForecastWeek'
+import NetInfo from "@react-native-community/netinfo"
+import { WeatherData } from '../../api/v1/weather/WeatherData.types'
+import useLoadCachedData from './hooks/useLoadCachedData'
+import { ForecastData } from '../../api/v1/forecast/ForecastData.types'
 
 const HomeScreen = ({ navigation }: any) => {
+    const [isConnected, setIsConnected] = useState<boolean | null>(null)
+    
+    const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null)
+    const [forecast, setForecast] = useState<ForecastData | null>(null)
+    const [forecastWeek, setForecastWeek] = useState<ForecastData | null>(null)
+
+    const { loadCachedData, cachedText, setCachedText } = useLoadCachedData({
+        setCurrentWeather,
+        setForecast,
+        setForecastWeek,
+    })
+
+
     const { location } = useGeolocation()
     // console.log("111 ~ location:", JSON.stringify(location, null, '\t'))
-    const { loadWeather, currentWeather, appError } = useLoadWeather()
+    const { loadWeather } = useLoadWeather(setCurrentWeather)
     // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
-    const { loadForecast, forecast } = useLoadForecast()
-    const { loadForecastWeek, forecastWeek } = useLoadForecastWeek()
+    const { loadForecast } = useLoadForecast(setForecast)
+    const { loadForecastWeek } = useLoadForecastWeek(setForecastWeek)
     // console.log("222 ~ forecast:", JSON.stringify(forecastWeek, null, '\t'))
 
     useEffect(() => {
+        NetInfo.fetch().then(state => {
+            // console.log("111 Connection type", state.type);
+            setIsConnected(state.isConnected)
+        });
+    }, [])
+
+    useEffect(() => {
         // console.log("333 ~ location:", location)
-        if (location) {
-            const payload = {
-                lat: location.coords.latitude,
-                lon: location.coords.longitude,
-            };
+        // console.log("111 isConnected", isConnected)
+        if (isConnected) {
+            if (location) {
+                const payload = {
+                    lat: location.coords.latitude,
+                    lon: location.coords.longitude,
+                };
 
-            loadWeather(payload)
-            loadForecast(payload)
-            loadForecastWeek(payload)
+                loadWeather(payload)
+                loadForecast(payload)
+                loadForecastWeek(payload)
+            }
+        } else if (isConnected === false) {
+            loadCachedData()
         }
-    }, [location])
-
-    const hasLoading = !Boolean(currentWeather);
-    // const hasLoading = false;
-
+    }, [location, isConnected])
+    
     const [selectedItem, setSelectedItem] = useState<any>(null);
 
     useEffect(() => {
@@ -49,9 +75,18 @@ const HomeScreen = ({ navigation }: any) => {
         }
     }, [selectedItem])
 
+    const hasLoading = !Boolean(currentWeather);
+    // const hasLoading = !Boolean(currentWeather && forecast && forecastWeek);
+    // const hasLoading = false;   
+
     return (
         <MainLayout hasLoading={hasLoading}>
             <View style={styles.container}>
+                {cachedText && (
+                    <Text style={styles.cachedText}>
+                        {cachedText}
+                    </Text>
+                )}
                 <View style={styles.row}>
                     <AutocompleteDropdown
                         clearOnFocus={false}
@@ -71,21 +106,18 @@ const HomeScreen = ({ navigation }: any) => {
                 </View>
                 <View style={styles.row3}>
                     <ForecastCarousel forecast={forecast} />
-                </View>
-                {/* <View style={styles.row2}>
-                    <ForecastCarousel city={'Mountain View'} />
-                </View> */}
+                </View>            
                 <View style={styles.rowForecastWeek}>
                     <ForecastWeekWidget forecastWeek={forecastWeek} />
                 </View>
-                <View style={styles.footerWrapper}>
+                {/* <View style={styles.footerWrapper}>
                     <Button
                         title="Go to City"
                         onPress={() => navigation.navigate('City', {
                             cityName: 'London',
                         })}
                     />
-                </View>
+                </View> */}
             </View>
         </MainLayout>
     );
