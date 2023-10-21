@@ -14,7 +14,7 @@ const CityScreen = ({ route, navigation }: any) => {
 
     const { cityName } = route.params;
     const { loadWeather } = useLoadWeather(setCurrentWeather, lang)
-    console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
+    // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
     useEffect(() => {
         if (cityName) {
