@@ -1,18 +1,12 @@
 import { useState, useCallback } from 'react'
+import { prepareApiParamsHelper } from '../../../api/helpers/prepareApiParamsHelper';
 import getForecastApi from '../../../api/v1/forecast/getForecastApi';
-import cfg from '../../../config/cfg';
 
-const useLoadForecast = (setForecast: any) => {  
+const useLoadForecast = (setForecast: any, lang: any) => {
   // const [appError, setAppError] = useState<any>(null)  
 
   const loadForecast = useCallback(async (payload: any) => {
-    // setIsLoading(true);
-
-    const apiParams = {
-      ...payload,
-      cnt: 6,
-      APPID: cfg.OPEN_WEATHER_API_KEY
-    };
+    const apiParams = prepareApiParamsHelper({ ...payload, cnt: 6 }, lang)    
 
     try {
       const res = await getForecastApi(apiParams);
@@ -23,10 +17,10 @@ const useLoadForecast = (setForecast: any) => {
       console.warn("ERROR:", e)
       // setAppError(e);
     }
-  }, []);
+  }, [lang]);
 
   return {
-    loadForecast,    
+    loadForecast,
     // appError
   };
 };

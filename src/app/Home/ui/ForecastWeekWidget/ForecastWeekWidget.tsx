@@ -4,7 +4,8 @@ import { format } from 'date-fns'
 import { WeatherIconComponents } from '../../consts'
 
 const ForecastWeekWidget = ({
-    forecastWeek
+    forecastWeek,
+    tempSymbol
 }: any) => {
     if (!forecastWeek) return null
 
@@ -29,7 +30,7 @@ const ForecastWeekWidget = ({
                             </View>
                             <View style={styles.cell}>
                                 <Text style={styles.tempText}>
-                                    {item?.main?.temp_min}  &#8457;
+                                    {item?.main?.temp_min} {tempSymbol}
                                 </Text>
                             </View>
                         </View>

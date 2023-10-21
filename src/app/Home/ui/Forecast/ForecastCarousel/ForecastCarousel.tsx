@@ -4,7 +4,8 @@ import ForecastCard from '../ForecastCard/ForecastCard';
 // import styles from './styles';
 
 const ForecastCarousel = ({
-    forecast
+    forecast,
+    tempSymbol
 }: any) => {
     // const defaultWeatherItem = {
     //     "id": null,
@@ -35,7 +36,7 @@ const ForecastCarousel = ({
                 scrollAnimationDuration={1000}
                 // onSnapToItem={(index) => console.log('current index:', index)}
                 renderItem={({ index, item }) => (
-                    <ForecastCard index={index} item={item} />
+                    <ForecastCard index={index} item={item} tempSymbol={tempSymbol} />
                 )}
             />
         </View>

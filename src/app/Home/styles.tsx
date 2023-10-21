@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
         // backgroundColor: '#999',
         // backgroundColor: 'steelblue',
     },
+    lang: {
+        width: '30%',
+        alignSelf: 'flex-end',
+    },
     cachedText: {
         color: 'white',
     },

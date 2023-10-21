@@ -1,18 +1,13 @@
 import { useState, useCallback } from 'react'
 import CacheService from '../../../api/CacheService';
+import { prepareApiParamsHelper } from '../../../api/helpers/prepareApiParamsHelper';
 import getWeatherApi from '../../../api/v1/weather/getWeatherApi';
-import cfg from '../../../config/cfg';
 
-const useLoadWeather = (setCurrentWeather: any) => {
+const useLoadWeather = (setCurrentWeather: any, lang: any) => {
   const [appError, setAppError] = useState<any>(null)
 
-  const loadWeather = useCallback(async (payload: any) => {
-    // setIsLoading(true);
-
-    const apiParams = {
-      ...payload,
-      APPID: cfg.OPEN_WEATHER_API_KEY
-    };
+  const loadWeather = useCallback(async (payload: any) => {    
+    const apiParams = prepareApiParamsHelper(payload, lang)
 
     try {
       const res = await getWeatherApi(apiParams);
@@ -26,10 +21,10 @@ const useLoadWeather = (setCurrentWeather: any) => {
       console.warn("ERROR:", e)
       setAppError(e);
     }
-  }, []);
+  }, [lang]);
 
   return {
-    loadWeather,    
+    loadWeather,
     appError
   };
 };

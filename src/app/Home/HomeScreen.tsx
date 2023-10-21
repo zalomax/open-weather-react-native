@@ -1,4 +1,4 @@
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { useEffect, useState } from 'react'
 import useGeolocation from './hooks/useGeolocation'
 import styles from './styles'
@@ -10,32 +10,34 @@ import ForecastCarousel from './ui/Forecast/ForecastCarousel/ForecastCarousel'
 import ForecastWeekWidget from './ui/ForecastWeekWidget/ForecastWeekWidget'
 import { AutocompleteDropdown } from 'react-native-autocomplete-dropdown'
 import useLoadForecastWeek from './hooks/useLoadForecastWeek'
-import NetInfo from "@react-native-community/netinfo"
+import NetInfo from '@react-native-community/netinfo'
 import { WeatherData } from '../../api/v1/weather/WeatherData.types'
 import useLoadCachedData from './hooks/useLoadCachedData'
 import { ForecastData } from '../../api/v1/forecast/ForecastData.types'
 
 const HomeScreen = ({ navigation }: any) => {
     const [isConnected, setIsConnected] = useState<boolean | null>(null)
-    
+
+    const [lang, setLang] = useState<any>({ id: 'en' })
+
     const [currentWeather, setCurrentWeather] = useState<WeatherData | null>(null)
     const [forecast, setForecast] = useState<ForecastData | null>(null)
     const [forecastWeek, setForecastWeek] = useState<ForecastData | null>(null)
 
-    const { loadCachedData, cachedText, setCachedText } = useLoadCachedData({
+    const { loadCachedData, cachedText } = useLoadCachedData({
         setCurrentWeather,
-        setForecast,
-        setForecastWeek,
+        // setForecast,
+        // setForecastWeek,
     })
 
 
     const { location } = useGeolocation()
     // console.log("111 ~ location:", JSON.stringify(location, null, '\t'))
-    const { loadWeather } = useLoadWeather(setCurrentWeather)
+    const { loadWeather } = useLoadWeather(setCurrentWeather, lang)
     // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
-    const { loadForecast } = useLoadForecast(setForecast)
-    const { loadForecastWeek } = useLoadForecastWeek(setForecastWeek)
+    const { loadForecast } = useLoadForecast(setForecast, lang)
+    const { loadForecastWeek } = useLoadForecastWeek(setForecastWeek, lang)
     // console.log("222 ~ forecast:", JSON.stringify(forecastWeek, null, '\t'))
 
     useEffect(() => {
@@ -62,8 +64,8 @@ const HomeScreen = ({ navigation }: any) => {
         } else if (isConnected === false) {
             loadCachedData()
         }
-    }, [location, isConnected])
-    
+    }, [location, isConnected, lang])
+
     const [selectedItem, setSelectedItem] = useState<any>(null);
 
     useEffect(() => {
@@ -77,11 +79,30 @@ const HomeScreen = ({ navigation }: any) => {
 
     const hasLoading = !Boolean(currentWeather);
     // const hasLoading = !Boolean(currentWeather && forecast && forecastWeek);
-    // const hasLoading = false;   
+    // const hasLoading = false;  
+
+    const tempSymbol = lang?.id === 'ru' ? '℃' : '℉'
 
     return (
         <MainLayout hasLoading={hasLoading}>
             <View style={styles.container}>
+                <View style={styles.row}>
+                    <View style={styles.lang}>
+                        <AutocompleteDropdown
+                            clearOnFocus={false}
+                            closeOnBlur={true}
+                            closeOnSubmit={false}
+                            showClear={false}
+                            useFilter={false}
+                            initialValue={lang}
+                            onSelectItem={setLang}
+                            dataSet={[
+                                { id: 'en', title: 'En' },
+                                { id: 'ru', title: 'Ru' },
+                            ]}
+                        />
+                    </View>
+                </View>
                 {cachedText && (
                     <Text style={styles.cachedText}>
                         {cachedText}
@@ -92,7 +113,7 @@ const HomeScreen = ({ navigation }: any) => {
                         clearOnFocus={false}
                         closeOnBlur={true}
                         closeOnSubmit={false}
-                        // initialValue={{ id: '2' }} // or just '2'
+                        // initialValue={{ id: 'San Francisco' }} // or just '2'
                         onSelectItem={setSelectedItem}
                         dataSet={[
                             { id: 'San Francisco', title: 'San Francisco' },
@@ -102,13 +123,13 @@ const HomeScreen = ({ navigation }: any) => {
                     />
                 </View>
                 <View style={styles.row2}>
-                    <SimpleWeatherWidget weatherData={currentWeather} />
+                    <SimpleWeatherWidget weatherData={currentWeather} tempSymbol={tempSymbol} />
                 </View>
                 <View style={styles.row3}>
-                    <ForecastCarousel forecast={forecast} />
-                </View>            
+                    <ForecastCarousel forecast={forecast} tempSymbol={tempSymbol} />
+                </View>
                 <View style={styles.rowForecastWeek}>
-                    <ForecastWeekWidget forecastWeek={forecastWeek} />
+                    <ForecastWeekWidget forecastWeek={forecastWeek} tempSymbol={tempSymbol} />
                 </View>
                 {/* <View style={styles.footerWrapper}>
                     <Button

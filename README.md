@@ -17,3 +17,6 @@ https://www.svgrepo.com/
 
 # Date ISO-8601 format
 https://stackoverflow.com/questions/52334494/get-the-current-date-using-date-fns-in-iso-8601-format
+
+# Toast Message
+https://www.npmjs.com/package/react-native-toast-message

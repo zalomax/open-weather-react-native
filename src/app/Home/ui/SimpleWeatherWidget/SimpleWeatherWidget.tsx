@@ -3,7 +3,8 @@ import { WeatherIconComponents } from '../../consts';
 import styles from './styles';
 
 const SimpleWeatherWidget = ({
-    weatherData
+    weatherData,
+    tempSymbol
 }: any) => {
     // const defaultWeatherItem = {
     //     "id": null,
@@ -26,7 +27,7 @@ const SimpleWeatherWidget = ({
             </View>
             <View style={styles.row2}>
                 <Text style={styles.tempText}>
-                    {weatherData?.main?.temp} &#8457;
+                    {weatherData?.main?.temp} {tempSymbol}
                 </Text>
             </View>
             <View style={styles.rowIcon}>

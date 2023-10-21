@@ -5,7 +5,8 @@ import styles from './styles';
 
 const ForecastCard = ({
     index,
-    item
+    item,
+    tempSymbol
 }: any) => {    
 
     const date = new Date(item?.dt_txt);
@@ -21,7 +22,7 @@ const ForecastCard = ({
             <View style={styles.iconContainer}>
                 <WeatherIcon style={styles.icon} width={40} height={40} />
             </View>
-            <Text style={styles.tempText}>{item?.main?.temp_min} &#8457;</Text>
+            <Text style={styles.tempText}>{item?.main?.temp_min} {tempSymbol}</Text>
         </View>
     );
 }
