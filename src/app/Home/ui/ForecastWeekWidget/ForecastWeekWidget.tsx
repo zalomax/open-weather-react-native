@@ -1,4 +1,4 @@
-import { Button, Text, View, FlatList } from 'react-native'
+import { Text, View, FlatList } from 'react-native'
 import styles from './styles'
 import { format } from 'date-fns'
 import { WeatherIconComponents } from '../../consts'

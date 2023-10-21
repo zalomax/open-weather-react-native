@@ -1,4 +1,4 @@
-import { Button, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import { WeatherIconComponents } from '../../consts';
 import styles from './styles';
 
@@ -6,18 +6,8 @@ const SimpleWeatherWidget = ({
     weatherData,
     tempSymbol
 }: any) => {
-    // const defaultWeatherItem = {
-    //     "id": null,
-    //     "main": "Clouds",
-    //     "description": "broken clouds",
-    //     "icon": "04d"
-    //   }
-    // console.log("333 ~ weatherData:", JSON.stringify(weatherData, null, '\t'))
-
     const weatherItem = weatherData?.weather[0];
-    // const cityName = weatherData || weatherData?.weather[0]
 
-    // console.log("333 ~ weatherItem.icon:", JSON.stringify(weatherItem.icon, null, '\t'))
     const WeatherIcon = WeatherIconComponents[weatherItem?.icon] || WeatherIconComponents.default
 
     return (

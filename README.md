@@ -1,4 +1,6 @@
-# open-weather-react-native
+# .env
+1 copy .env.dist to .env 
+2 change EXPO_PUBLIC_OPEN_WEATHER_API_KEY to your key
 
 # Debug
 console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))

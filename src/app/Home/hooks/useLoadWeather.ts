@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react'
-import CacheService from '../../../api/CacheService';
-import { prepareApiParamsHelper } from '../../../api/helpers/prepareApiParamsHelper';
-import getWeatherApi from '../../../api/v1/weather/getWeatherApi';
+import CacheService from '../../../api/CacheService'
+import { prepareApiParamsHelper } from '../../../api/helpers/prepareApiParamsHelper'
+import getWeatherApi from '../../../api/v1/weather/getWeatherApi'
 
 const useLoadWeather = (setCurrentWeather: any, lang: any) => {
   const [appError, setAppError] = useState<any>(null)
@@ -11,15 +11,13 @@ const useLoadWeather = (setCurrentWeather: any, lang: any) => {
 
     try {
       const res = await getWeatherApi(apiParams);
-      // console.log("555 ~ res:", res)
 
       await CacheService.setData('currentWeather', res?.json)
-      // await CacheService.setData('currentWeather', null)
 
       setCurrentWeather(res?.json);
     } catch (e) {
       console.warn("ERROR:", e)
-      setAppError(e);
+      setAppError(e)
     }
   }, [lang]);
 
@@ -29,4 +27,4 @@ const useLoadWeather = (setCurrentWeather: any, lang: any) => {
   };
 };
 
-export default useLoadWeather;
+export default useLoadWeather

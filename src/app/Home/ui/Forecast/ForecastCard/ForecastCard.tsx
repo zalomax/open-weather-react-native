@@ -4,13 +4,11 @@ import { WeatherIconComponents } from '../../../consts';
 import styles from './styles';
 
 const ForecastCard = ({
-    index,
     item,
     tempSymbol
 }: any) => {    
 
     const date = new Date(item?.dt_txt);
-    // console.log("333 ~ date:", JSON.stringify(date, null, '\t'))
     const timeText = format(date, 'H:mm')
 
     const weatherItem = item?.weather[0];

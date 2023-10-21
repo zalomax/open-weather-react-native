@@ -26,30 +26,21 @@ const HomeScreen = ({ navigation }: any) => {
 
     const { loadCachedData, cachedText } = useLoadCachedData({
         setCurrentWeather,
-        // setForecast,
-        // setForecastWeek,
     })
 
-
     const { location } = useGeolocation()
-    // console.log("111 ~ location:", JSON.stringify(location, null, '\t'))
     const { loadWeather } = useLoadWeather(setCurrentWeather, lang)
-    // console.log("222 ~ currentWeather:", JSON.stringify(currentWeather, null, '\t'))
 
     const { loadForecast } = useLoadForecast(setForecast, lang)
     const { loadForecastWeek } = useLoadForecastWeek(setForecastWeek, lang)
-    // console.log("222 ~ forecast:", JSON.stringify(forecastWeek, null, '\t'))
 
     useEffect(() => {
         NetInfo.fetch().then(state => {
-            // console.log("111 Connection type", state.type);
             setIsConnected(state.isConnected)
         });
     }, [])
 
     useEffect(() => {
-        // console.log("333 ~ location:", location)
-        // console.log("111 isConnected", isConnected)
         if (isConnected) {
             if (location) {
                 const payload = {
@@ -69,7 +60,6 @@ const HomeScreen = ({ navigation }: any) => {
     const [selectedItem, setSelectedItem] = useState<any>(null);
 
     useEffect(() => {
-        // console.log("333 ~ selectedItem:", selectedItem)
         if (selectedItem?.id) {
             navigation.navigate('City', {
                 cityName: selectedItem?.id,
@@ -79,7 +69,6 @@ const HomeScreen = ({ navigation }: any) => {
 
     const hasLoading = !Boolean(currentWeather);
     // const hasLoading = !Boolean(currentWeather && forecast && forecastWeek);
-    // const hasLoading = false;  
 
     const tempSymbol = lang?.id === 'ru' ? '℃' : '℉'
 
@@ -113,7 +102,6 @@ const HomeScreen = ({ navigation }: any) => {
                         clearOnFocus={false}
                         closeOnBlur={true}
                         closeOnSubmit={false}
-                        // initialValue={{ id: 'San Francisco' }} // or just '2'
                         onSelectItem={setSelectedItem}
                         dataSet={[
                             { id: 'San Francisco', title: 'San Francisco' },
@@ -131,14 +119,6 @@ const HomeScreen = ({ navigation }: any) => {
                 <View style={styles.rowForecastWeek}>
                     <ForecastWeekWidget forecastWeek={forecastWeek} tempSymbol={tempSymbol} />
                 </View>
-                {/* <View style={styles.footerWrapper}>
-                    <Button
-                        title="Go to City"
-                        onPress={() => navigation.navigate('City', {
-                            cityName: 'London',
-                        })}
-                    />
-                </View> */}
             </View>
         </MainLayout>
     );

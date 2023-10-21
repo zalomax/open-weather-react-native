@@ -8,22 +8,22 @@
 // match the expected interface, even if the JSON is valid.
 
 export interface ForecastData {
-    cod:     string;
+    cod: string;
     message: number;
-    cnt:     number;
-    list:    List[];
-    city:    City;
+    cnt: number;
+    list: List[];
+    city: City;
 }
 
 export interface City {
-    id:         number;
-    name:       string;
-    coord:      Coord;
-    country:    string;
+    id: number;
+    name: string;
+    coord: Coord;
+    country: string;
     population: number;
-    timezone:   number;
-    sunrise:    number;
-    sunset:     number;
+    timezone: number;
+    sunrise: number;
+    sunset: number;
 }
 
 export interface Coord {
@@ -32,15 +32,15 @@ export interface Coord {
 }
 
 export interface List {
-    dt:         number;
-    main:       Main;
-    weather:    Weather[];
-    clouds:     Clouds;
-    wind:       Wind;
+    dt: number;
+    main: Main;
+    weather: Weather[];
+    clouds: Clouds;
+    wind: Wind;
     visibility: number;
-    pop:        number;
-    sys:        Sys;
-    dt_txt:     Date;
+    pop: number;
+    sys: Sys;
+    dt_txt: Date;
 }
 
 export interface Clouds {
@@ -48,15 +48,15 @@ export interface Clouds {
 }
 
 export interface Main {
-    temp:       number;
+    temp: number;
     feels_like: number;
-    temp_min:   number;
-    temp_max:   number;
-    pressure:   number;
-    sea_level:  number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    sea_level: number;
     grnd_level: number;
-    humidity:   number;
-    temp_kf:    number;
+    humidity: number;
+    temp_kf: number;
 }
 
 export interface Sys {
@@ -64,16 +64,16 @@ export interface Sys {
 }
 
 export interface Weather {
-    id:          number;
-    main:        string;
+    id: number;
+    main: string;
     description: string;
-    icon:        string;
+    icon: string;
 }
 
 export interface Wind {
     speed: number;
-    deg:   number;
-    gust:  number;
+    deg: number;
+    gust: number;
 }
 
 // Converts JSON strings to/from your types
@@ -140,7 +140,7 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
             const typ = typs[i];
             try {
                 return transform(val, typ, getProps);
-            } catch (_) {}
+            } catch (_) { }
         }
         return invalidValue(typs, val, key, parent);
     }
@@ -199,9 +199,9 @@ function transform(val: any, typ: any, getProps: any, key: any = '', parent: any
     if (Array.isArray(typ)) return transformEnum(typ, val);
     if (typeof typ === "object") {
         return typ.hasOwnProperty("unionMembers") ? transformUnion(typ.unionMembers, val)
-            : typ.hasOwnProperty("arrayItems")    ? transformArray(typ.arrayItems, val)
-            : typ.hasOwnProperty("props")         ? transformObject(getProps(typ), typ.additional, val)
-            : invalidValue(typ, val, key, parent);
+            : typ.hasOwnProperty("arrayItems") ? transformArray(typ.arrayItems, val)
+                : typ.hasOwnProperty("props") ? transformObject(getProps(typ), typ.additional, val)
+                    : invalidValue(typ, val, key, parent);
     }
     // Numbers can be parsed by Date but shouldn't be.
     if (typ === Date && typeof val !== "number") return transformDate(val);
