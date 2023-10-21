@@ -20,3 +20,6 @@ https://stackoverflow.com/questions/52334494/get-the-current-date-using-date-fns
 
 # Toast Message
 https://www.npmjs.com/package/react-native-toast-message
+
+# Build apk
+https://docs.expo.dev/build-reference/apk/
