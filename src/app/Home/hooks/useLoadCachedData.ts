@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react'
 import CacheService from '../../../api/CacheService'
+import { getDateDiffrenceText } from '../../../lib/helpers/dateHelpers';
 
 const useLoadCachedData = (setters: any) => {
   const [cachedText, setCachedText] = useState<string | null>(null)
@@ -7,13 +8,15 @@ const useLoadCachedData = (setters: any) => {
   const loadCachedData = useCallback(async () => {
     try {
       const fullData: any = await CacheService.getData()
-      console.log("222 ~ data cached:", JSON.stringify(fullData, null, '\t'))
+      // console.log("222 ~ data cached:", JSON.stringify(fullData, null, '\t'))
 
       if (fullData) {
         if (fullData?.currentWeather) {
           setters.setCurrentWeather(fullData?.currentWeather)
 
-          setCachedText(`Cached Weather loaded form ${fullData?.dateText}`)
+          const diffrenceText = getDateDiffrenceText(new Date(), new Date(fullData?.dateText))
+          setCachedText(`Weather data loaded > ${diffrenceText} ago`)
+
           return
         }
         // if (fullData['forecast']) {
